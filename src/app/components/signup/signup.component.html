@@ -1,0 +1,69 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5 border border-0 shadow">
+              <div class="card-body">
+                <h3 class="my-3">Signin here</h3>
+<form (ngSubmit)="submitForm($event)">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Name</label>
+            <input type="name" name="name" [(ngModel)]="user.name" class="form-control" id="inputname" placeholder="Name">
+          </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" name="email" [(ngModel)]="user.email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input type="password" name="password" [(ngModel)]="user.password" class="form-control" id="inputPassword4" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input  style="height:50px;" type="text" name="address" [(ngModel)]="user.address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="form-group">
+      <label for="inputAbout">About</label>
+      <input type="text-area" class="form-control" name="about" [(ngModel)]="user.about" id="inputAbout" placeholder="Enter Details About you">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" [(ngModel)]="user.gender" class="form-control">
+              <option selected>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </div>
+      <div class="form-group col-md-6">
+        <label for="phonenumber">Phone Number</label>
+        <input type="text" name="phonenumber" [(ngModel)]="user.phone" class="form-control" id="inputPhonbeNumber">
+      </div>
+      
+      <!-- <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div> -->
+    </div>
+    <div class="form-group">
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div> -->
+    </div>
+    <div class="container text-center mt-2">
+        <button type="submit" class="btn btn-primary rounded-0">Register</button>
+        <button type="reset" class="btn btn-danger rounded-0 ms-2">Reset Data</button>
+      </div>
+
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{{user | json}}
