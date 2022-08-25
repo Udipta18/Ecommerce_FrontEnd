@@ -4,28 +4,40 @@
             <div class="card mt-5 border border-0 shadow">
               <div class="card-body">
                 <h3 class="my-3">Signin here</h3>
-<form (ngSubmit)="submitForm($event)">
+<form  action="#"  (ngSubmit)="submitForm($event)" novalidate>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Name</label>
-            <input type="name" name="name" [(ngModel)]="user.name" class="form-control" id="inputname" placeholder="Name">
+            <input type="name" name="name" [(ngModel)]="user.name" [ngClass]="status.errormessage.name? 'is-invalid':''" class="form-control" id="inputname" placeholder="Name">
+            <div  class="invalid-feedback">
+              {{  status.errormessage.name }}
+             </div>
           </div>
       <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
-        <input type="email" name="email" [(ngModel)]="user.email" class="form-control" id="inputEmail4" placeholder="Email">
+        <input type="email" name="email" [(ngModel)]="user.email" [ngClass]="status.errormessage.email? 'is-invalid':''"  class="form-control" id="inputEmail4" placeholder="Email">
+        <div  class="invalid-feedback">
+              {{  status.errormessage.email }}
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Password</label>
-        <input type="password" name="password" [(ngModel)]="user.password" class="form-control" id="inputPassword4" placeholder="Password">
+        <input type="password" name="password" [(ngModel)]="user.password" [ngClass]="status.errormessage.password? 'is-invalid':''"  class="form-control" id="inputPassword4" placeholder="Password">
+        <div  class="invalid-feedback">
+          {{  status.errormessage.password }}
+    </div>
       </div>
     </div>
     <div class="form-group">
       <label for="inputAddress">Address</label>
-      <input  style="height:50px;" type="text" name="address" [(ngModel)]="user.address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      <input  style="height:50px;" type="text" name="address" [(ngModel)]="user.address"  class="form-control" id="inputAddress" placeholder="1234 Main St">
     </div>
     <div class="form-group">
       <label for="inputAbout">About</label>
-      <input type="text-area" class="form-control" name="about" [(ngModel)]="user.about" id="inputAbout" placeholder="Enter Details About you">
+      <input type="text-area" class="form-control" name="about" [(ngModel)]="user.about" [ngClass]="status.errormessage.about? 'is-invalid':''" id="inputAbout" placeholder="Enter Details About you">
+      <div  class="invalid-feedback">
+        {{  status.errormessage.about }}
+  </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
@@ -38,7 +50,10 @@
           </div>
       <div class="form-group col-md-6">
         <label for="phonenumber">Phone Number</label>
-        <input type="text" name="phonenumber" [(ngModel)]="user.phone" class="form-control" id="inputPhonbeNumber">
+        <input type="text" name="phonenumber" [(ngModel)]="user.phone" [ngClass]="status.errormessage.phone? 'is-invalid':''" class="form-control" id="inputPhonbeNumber">
+        <div  class="invalid-feedback">
+          {{  status.errormessage.phone }}
+    </div>
       </div>
       
       <!-- <div class="form-group col-md-2">
@@ -66,4 +81,3 @@
 </div>
 </div>
 
-{{user | json}}

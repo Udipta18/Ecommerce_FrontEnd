@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,6 +8,18 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  status={
+    errorstatus:false,
+    errormessage:{
+      name:null,
+      email:null,
+      password:'',
+      about:'',
+      phone:''
+
+    }
+  }
 
   user = {
     name: '',
@@ -18,7 +31,7 @@ export class SignupComponent implements OnInit {
     gender: ''
   }
 
-  constructor( private UserService:UserService)  { }
+  constructor( private UserService:UserService,private toast:ToastrService)  { }
 
   ngOnInit(): void {
   }
@@ -28,10 +41,10 @@ export class SignupComponent implements OnInit {
     event.preventDefault();
     console.log(this.user);
     if (this.user.name.trim() === '') {
-      alert("username is blank!!")
+      this.toast.error("username is blank!!")
       return;
     } else if (this.user.email.trim() === '') {
-      alert("email is blank !!")
+      this.toast.error("email is blank !!")
       return;
 
     }
@@ -39,13 +52,19 @@ export class SignupComponent implements OnInit {
     //submit the form
     this.UserService.createUser(this.user).subscribe((success)=>{
             console.log(success)
-            alert("user is registered successfully !! ")
+            this.toast.success("user is registered successfully !! ")
     },(error)=>{
           console.log(error)
           if(error.status==400){
-            alert("validation error")
+            //alert("validation error")
+            console.log(error.error)
+
+            this.status.errormessage=error.error
+            this.status.errorstatus=true
           }
   
+    },() =>{
+       console.log('completed');
     })
   }
 
