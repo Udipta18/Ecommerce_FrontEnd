@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthHelperService } from 'src/app/services/auth-helper.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,7 +15,12 @@ export class LoginComponent implements OnInit {
     password:''
   }
 
-  constructor(private toast:ToastrService,private userService:UserService) { }
+  constructor(private toast:ToastrService,
+    private userService:UserService,
+    private authhelper:AuthHelperService,
+    private router:Router
+
+    ) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +41,16 @@ export class LoginComponent implements OnInit {
     this.userService.generateToken(this.loginData).subscribe((response) =>{
           console.log(response)
           this.toast.success("LOGIN SUCCESS")
+
+          //save the data to localstorage
+          this.authhelper.login(response)
+
+          //navigate to dashboard
+           this.router.navigate(['/dashboard'])
+
+
+
+
     },(error)=>{
       console.log(error)
       this.toast.error(error.error.message)

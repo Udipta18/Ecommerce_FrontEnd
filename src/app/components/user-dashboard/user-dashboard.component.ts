@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AuthHelperService } from 'src/app/services/auth-helper.service';
 
 @Component({
-  selector: 'app-custom-navbar',
-  templateUrl: './custom-navbar.component.html',
-  styleUrls: ['./custom-navbar.component.css']
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html',
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class CustomNavbarComponent implements OnInit {
+export class UserDashboardComponent implements OnInit {
 
-   isLogin=false
-   user:any=null
+
+  isLogin=false
+  user:any={}
 
   constructor(private authHelper:AuthHelperService) { }
 
@@ -19,16 +20,15 @@ export class CustomNavbarComponent implements OnInit {
       this.updateLoginDetails()
     })
   }
-
-  
+   
   logoutUser() {
     this.authHelper.logout()
   }
 
-  updateLoginDetails(){
-    this.isLogin=this.authHelper.checkLogin()
-    this.user=this.isLogin?this.authHelper.getCurrentUser():null
 
+  updateLoginDetails() {
+    this.isLogin = this.authHelper.checkLogin()
+    this.user = this.isLogin ? this.authHelper.getCurrentUser() : null
   }
 
 }
