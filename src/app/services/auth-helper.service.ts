@@ -10,15 +10,19 @@ export class AuthHelperService {
 
   constructor() { }
 
-  //login
+  //login and whenever we login, the data will be stored in localstorage in a  map format
   login(data:any){
      localStorage.setItem("data",JSON.stringify(data))
+
+     //an emitter will be thrown so that whatever subscribed the event that will get the value as true
      this.loginLogoutEmitter.emit(true)
   }
 
   //logout
   logout(){
     localStorage.removeItem("data")
+
+    //an emitter will be thrown so that whatever subscribed the event that will get the value as false
     this.loginLogoutEmitter.emit(false)
   }
 
@@ -26,6 +30,8 @@ export class AuthHelperService {
   checkLogin(){
     let data = localStorage.getItem("data")
     if(data){
+
+      //transforming string to object
      let ob=JSON.parse(data)
      if(ob.token && ob.user){
       return true
