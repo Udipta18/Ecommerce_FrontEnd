@@ -25,7 +25,7 @@ export class UserDashboardGuard implements CanActivate {
         return true
       }
   
-        this.router.navigate(["/login"])
+        this.router.navigate(["/login"],{   queryParams:{message:'You not logged in !! Login First'}})
 
         return false;
   }

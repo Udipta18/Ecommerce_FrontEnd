@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { StoreComponent } from './components/store/store.component';
 import { ProductComponent } from './components/product/product.component'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ProductComponent } from './components/product/product.component'
     ProfileComponent,
     UserDashboardComponent,
     StoreComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { ProductComponent } from './components/product/product.component'
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
-    })
+    }),
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
