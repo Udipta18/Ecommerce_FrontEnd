@@ -12,9 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomNavbarComponent } from './components/custom-navbar/custom-navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { JwtInterceptor } from './services/jwt.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { StoreComponent } from './components/store/store.component';
@@ -49,7 +49,13 @@ import { CartComponent } from './components/cart/cart.component';
     }),
     InfiniteScrollModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:JwtInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

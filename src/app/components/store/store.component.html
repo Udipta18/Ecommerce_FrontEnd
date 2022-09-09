@@ -31,7 +31,7 @@
 
                 <div class="col-md-6 col-lg-4" *ngFor="let p of products.content">
 
-                    <app-product  [product]="p"></app-product>
+                    <app-product  [product]="p" (productAddedEvent)="addToCart($event)"></app-product>
 
                 </div>
 

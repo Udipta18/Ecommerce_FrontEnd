@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Routes } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-store',
@@ -21,7 +22,8 @@ export class StoreComponent implements OnInit {
     private category: CategoryService,
     private product: ProductService,
     private toast: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService:CartService
   ) { }
 
   ngOnInit(): void {
@@ -112,5 +114,21 @@ export class StoreComponent implements OnInit {
 
 
       
+  }
+
+  addToCart(product:any){
+    console.log(event)
+    this.cartService.addItemToCart(product.productId,1).subscribe({
+      next:data=>{
+        console.log(data);
+        this.toast.success("Item added to card")
+
+      },
+      error:error=>{
+        console.log(error);
+        this.toast.error("Error while adding to cart")
+
+      }
+    })
   }
 }
