@@ -1,3 +1,4 @@
+<div *ngIf="!orderProceed">
 <div class="container" *ngIf="cart">
     <div class="row mt-2">
      <div class="col-md-12">
@@ -15,9 +16,21 @@
  
                      </div>
                      <div class="container-fluid ps-0 py-3">
-                         <button (click)="quantityChange(item.product.productId,(item.quantity+1))" class="btn btn-primary btn-sm">Increase Quantity</button>
+                        <button mat-mini-fab color="primary" (click)="quantityChange(item.product.productId,(item.quantity+1))" class=" ms-2 btn-sm">
+                            <mat-icon>add_shopping_cart</mat-icon>
+                          </button> 
+                          <button mat-mini-fab color="btn-dark" (click)="quantityChange(item.product.productId,(item.quantity-1))" class=" ms-2 btn-sm">
+                            <mat-icon>remove_shopping_cart</mat-icon>
+                          </button> 
+                          <button mat-mini-fab color="warn" (click)="removeItem(item)" class=" ms-2 btn-sm">
+                            <mat-icon>delete_outline</mat-icon>
+                          </button> 
+
+
+
+                         <!-- <button (click)="quantityChange(item.product.productId,(item.quantity+1))" class="btn btn-primary btn-sm">Increase Quantity</button>
                          <button (click)="quantityChange(item.product.productId,(item.quantity-1))" class="btn btn-dark ms-2 btn-sm">Decrease Quantity</button>
-                         <button (click)="removeItem(item)" class="btn btn-danger ms-2 btn-sm">Remove Item</button>
+                         <button (click)="removeItem(item)" class="btn btn-danger ms-2 btn-sm">Remove Item</button> -->
                      </div>
                      <div class="cart-text">
                          Price  : <b> ₹ {{item.totalProductPrice}}</b>
@@ -32,11 +45,37 @@
              </div>
          </div>
  
- 
-         <div class="container mt-3 border-0 text-center">
-             <button class="btn btn-success btn-lg">Click to proceed</button>
+       
+         <div class="container mt-3 border-0 text-center"  *ngIf="cart.items.length>0">
+            <button class="btn btn-dark  btn-lg  " (click)="countTotalValue()">Total Price Calculator:{{totalValue}}</button>
+             <button (click)="orderProceed=true" class="btn btn-success btn-lg  ms-2" >Click to proceed</button>
          </div>
  
      </div>
     </div>
  </div>
+</div>
+
+<div *ngIf="orderProceed  && !redirect" class="mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Enter Shipping Address With Pincode</h1>
+                <div class="form-group">
+                   <textarea [(ngModel)]="order.address" name="" id="" rows="20" placeholder="Enter Your Address" class="form-control"></textarea>
+                </div>
+                <p class="p-4 text-danger">*we will use your profile contact number as contactnumber.In case of any query drop a mail <b>dasdsa1208@gmail.com</b> </p>
+               <!-- {{order | json}} -->
+            </div>
+            <div class="container text-center">
+                <button  (click)="createOrderAndProceedForPayment()"   class="btn btn-success btn-lg">Proceed To Payment</button>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<div class="container text-center"  *ngIf="redirect">
+   <h1>Redirecting To Payment Page............................</h1>
+</div>

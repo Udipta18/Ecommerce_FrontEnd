@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,7 +7,15 @@ import { environment } from 'src/environments/environment';
 })
 export class CartService {
 
+  @Output()
+  public cartEmitter=new EventEmitter<any>()
+
   constructor(private httpClient:HttpClient) { }
+
+
+  cartChanged(cart:any){
+    this.cartEmitter.emit(cart)
+  }
 
   getCart(){
     return this.httpClient.get(`${environment.baseUrl}/carts/`)

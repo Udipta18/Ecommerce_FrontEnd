@@ -117,12 +117,12 @@ export class StoreComponent implements OnInit {
   }
 
   addToCart(product:any){
-    console.log(event)
+    console.log(product)
     this.cartService.addItemToCart(product.productId,1).subscribe({
       next:data=>{
         console.log(data);
         this.toast.success("Item added to card")
-
+        this.cartService.cartChanged(data)
       },
       error:error=>{
         console.log(error);

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -21,6 +24,10 @@ import { StoreComponent } from './components/store/store.component';
 import { ProductComponent } from './components/product/product.component'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CartComponent } from './components/cart/cart.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { NgProgressModule } from 'ngx-progressbar';
+import {NgProgressHttpModule} from "ngx-progressbar/http";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +42,8 @@ import { CartComponent } from './components/cart/cart.component';
     UserDashboardComponent,
     StoreComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,14 @@ import { CartComponent } from './components/cart/cart.component';
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
     }),
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatIconModule,
+    MatButtonModule,
+    NgProgressModule,
+    NgProgressHttpModule
+
+   
+
   ],
   providers: [
     {
