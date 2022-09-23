@@ -16,6 +16,7 @@ export class StoreComponent implements OnInit {
   categories: any
   products: any;
   categoryId:any
+  term:any
 
 
   constructor(

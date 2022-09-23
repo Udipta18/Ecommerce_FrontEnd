@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+  }
+  .product-img{
+    max-height: 100px;
+    width: auto!important;
+    object-fit: contain!important;
+    margin: 20px;
+  }

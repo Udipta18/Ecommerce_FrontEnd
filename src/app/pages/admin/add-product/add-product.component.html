@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header">
+          <h3 class="">Add New Product here</h3>
+        </div>
+        <div class="card-body">
+          <form action="#" (ngSubmit)="submitProduct($event)">
+            <div class="my-3">
+              <label for="productName">Product name</label>
+              <input
+                id="productName"
+                type="text"
+                class="form-control"
+                placeholder="Enter product title"
+                [(ngModel)]="product.productName"
+                name="productName"
+              />
+            </div>
+            <div class="my-3">
+              <label for="productName">Product name</label>
+              <textarea
+                style="height: 250px"
+                class="form-control"
+                placeholder="Enter product here"
+                [(ngModel)]="product.productDesc"
+                name="productDesc"
+              ></textarea>
+            </div>
+
+            <div class="my-3">
+              <label for="productName">Product price</label>
+              <input
+                id="productName"
+                type="text"
+                class="form-control"
+                placeholder="Enter product price"
+                [(ngModel)]="product.productPrice"
+                name="productPrice"
+              />
+            </div>
+            <div class="my-3">
+              <label for="productQuantity">Product Quantity</label>
+              <input
+                id="productQuantity"
+                type="text"
+                class="form-control"
+                placeholder="Enter product qantity"
+                [(ngModel)]="product.productQuantity"
+                name="productQuantity"
+              />
+            </div>
+
+            <div class="form-group form-check mx-2">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [(ngModel)]="product.live"
+                id="live"
+                name="live"
+              />
+              <label class="form-check-label" for="live">Live</label>
+            </div>
+            <div class="form-group form-check mx-2">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [(ngModel)]="product.stock"
+                id="stock"
+                name="stock"
+              />
+              <label class="form-check-label" for="stock"
+                >Product is in stock</label
+              >
+            </div>
+
+            <div class="form-group my-3">
+              <label for="file">Choose Product banner</label>
+              <br />
+              <input type="file" class="form-control-file" id="file" />
+            </div>
+
+            <div class="form-group">
+              <label for="category">Select Category</label>
+              <select
+                [(ngModel)]="product.categoryId"
+                name="category"
+                id="category"
+                class="form-control"
+                name="category"
+              >
+                <option [value]="c.categoryId" *ngFor="let c of categories">
+                  {{ c.title }}
+                </option>
+              </select>
+            </div>
+
+            <div class="container text-center mt-3">
+              <button type="submit" class="btn-success btn">Add Product</button>
+              <button type="reset" class="btn-warning btn ms-2">
+                Reset Product Detail
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

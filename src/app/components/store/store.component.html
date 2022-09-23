@@ -1,5 +1,20 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
+    <app-search></app-search>
+</div> -->
 
+<div class="container-fluid">
+    <!-- <div class="text-center">
+         <label for="search"><b>:SEARCH</b></label>
+        <input type="text" [(ngModel)]="term"> 
+
+    </div> -->
+    <div class="col-md-8">
+        <div class="d-flex form-inputs">
+        <input class="form-control" type="text" [(ngModel)]="term" placeholder="Search any product...">
+        <i class="bx bx-search"></i>
+        </div>
+           </div>
+   
     <div class="row p-5">
 
 
@@ -29,7 +44,7 @@
             (scrolled)="onScroll()" >
 
 
-                <div class="col-md-6 col-lg-4" *ngFor="let p of products.content">
+                <div class="col-md-6 col-lg-4" *ngFor="let p of products.content|filter:term">
 
                     <app-product  [product]="p" (productAddedEvent)="addToCart($event)"></app-product>
 

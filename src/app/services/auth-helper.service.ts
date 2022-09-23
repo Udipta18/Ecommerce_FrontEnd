@@ -58,4 +58,14 @@ export class AuthHelperService {
     }
     return null
   }
+
+  //check admin user
+  checkAdminUser(): boolean {
+    let user = this.getCurrentUser()
+    let flag = null
+    if (this.checkLogin()) {
+      flag = user.roles.find((r: any) => r.id === 5245)
+    }
+    return flag ? true : false
+  }
 }

@@ -12,6 +12,7 @@ export class CustomNavbarComponent implements OnInit {
    isLogin=false
    user:any=null
    cart:any
+   adminUser:any
 
   constructor(private authHelper:AuthHelperService,
     private cartService:CartService) { }
@@ -39,6 +40,7 @@ export class CustomNavbarComponent implements OnInit {
   }
 
   updateLoginDetails(){
+    this.adminUser=this.authHelper.checkAdminUser()
     this.isLogin=this.authHelper.checkLogin()
     this.user=this.isLogin?this.authHelper.getCurrentUser():null
 

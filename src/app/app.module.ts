@@ -27,7 +27,18 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { NgProgressModule } from 'ngx-progressbar';
 import {NgProgressHttpModule} from "ngx-progressbar/http";
-
+import { SearchComponent } from './components/search/search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ViewProductComponent } from './components/view-product/view-product.component';
+import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { AddProductComponent } from './pages/admin/add-product/add-product.component';
+import { ViewProductsComponent } from './pages/admin/view-products/view-products.component';
+import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
+import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
+import {MaterialModule} from '../material-module';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { ManageOrderComponent } from './pages/admin/manage-order/manage-order.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +54,17 @@ import {NgProgressHttpModule} from "ngx-progressbar/http";
     StoreComponent,
     ProductComponent,
     CartComponent,
-    OrdersComponent
+    OrdersComponent,
+    SearchComponent,
+    ViewProductComponent,
+    AdminDashboardComponent,
+    AddProductComponent,
+    ViewProductsComponent,
+    UpdateProductComponent,
+    AdminHomeComponent,
+    AddCategoryComponent,
+    ViewCategoriesComponent,
+    ManageOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +80,9 @@ import {NgProgressHttpModule} from "ngx-progressbar/http";
     MatIconModule,
     MatButtonModule,
     NgProgressModule,
-    NgProgressHttpModule
-
+    NgProgressHttpModule,
+    Ng2SearchPipeModule,
+    MaterialModule
    
 
   ],

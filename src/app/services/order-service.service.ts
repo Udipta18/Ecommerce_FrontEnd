@@ -17,6 +17,13 @@ export class OrderServiceService {
     return this.httpclient.get(`${environment.baseUrl}/orders/`)
 
   }
+
+  //get all orders
+
+  getAllOrders() {
+    return this.httpclient.get(`${environment.baseUrl}/orders/all`)
+
+  }
 }
 
 
