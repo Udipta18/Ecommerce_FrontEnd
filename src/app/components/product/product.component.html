@@ -19,7 +19,7 @@
             Price : <span class="fw-bold">₹ {{product.productPrice}} </span>
         </div>
         <div class="fuild-container mt-2 text-center">
-            <button class="btn btn-success btn-sm" (click)="addToCartButtonClick(product)">Add to Cart</button>
+            <button [ngClass]="product.stock ? 'btn btn-success' : 'btn btn-danger'" [disabled]="!product.stock" (click)="addToCartButtonClick(product)">{{product.stock ? 'Add to Cart' : 'Out of Stock'}}</button>
             <button class="btn btn-primary btn-sm ms-1" [routerLink]="'/view-product/'+product.productId">View Product</button>
         </div>
 

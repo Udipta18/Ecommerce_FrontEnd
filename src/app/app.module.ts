@@ -38,7 +38,8 @@ import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.componen
 import {MaterialModule} from '../material-module';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
-import { ManageOrderComponent } from './pages/admin/manage-order/manage-order.component'
+import { ManageOrderComponent } from './pages/admin/manage-order/manage-order.component';
+import {WindowRef} from "./services/WindoeRef";
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ManageOrderComponent } from './pages/admin/manage-order/manage-order.co
       provide:HTTP_INTERCEPTORS,
       useClass:JwtInterceptor,
       multi:true
-    }
+    },
+    WindowRef
   ],
   bootstrap: [AppComponent]
 })

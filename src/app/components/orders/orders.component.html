@@ -62,6 +62,8 @@
             <button
               class="btn btn-success ms-2 btn-sm"
               *ngIf="order.paymentStatus == 'NOT PAID'"
+              (click)="startPaymentComponent(order.orderAmount,order)"
+              
             >
               Pay to Process
             </button>
